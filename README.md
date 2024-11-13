@@ -26,7 +26,7 @@
 
 # Oppgave 1B
   - ## Leveranser
-    Lenke til kjørt GitHub Actions workflow: 
+    Lenke til kjørt GitHub Actions workflow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11820057239
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
