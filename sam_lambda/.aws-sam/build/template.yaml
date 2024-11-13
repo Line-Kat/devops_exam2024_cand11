@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'cand11-image-generator
+
+  Sample SAM Template for cand11-image-generator
+
+  '
+Resources:
+  ImageGenerationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      CodeUri: ImageGenerationFunction
+      MemorySize: 128
+      Timeout: 60
+      Environment:
+        Variables:
+          BUCKET_NAME: pgr301-couch-explorers
+      Role:
+        Fn::GetAtt:
+        - LambdaExecutionRole
+        - Arn
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /image_generator
+            Method: post
+    Metadata:
+      SamResourceId: ImageGenerationFunction
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Policies:
+      - PolicyName: LambdaLoggingPolicy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource: arn:aws:logs:*:*:*
+      - PolicyName: LambdaS3Policy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - s3:PutObject
+            - s3:PutObjectAcl
+            - s3:GetObject
+            Resource: arn:aws:s3:::pgr301-couch-explorers/*
+      - PolicyName: LambdaBedrockPolicy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - bedrock:InvokeModel
+            Resource: '*'
+Outputs:
+  ImageGeneratorApi:
+    Description: API Gateway endpoint URL for Prod stage for Image Generator function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/image_generator/
+  ImageGenerationFunctionArn:
+    Description: Image Generation Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ImageGenerationFunction
+      - Arn

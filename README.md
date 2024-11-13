@@ -1,3 +1,30 @@
+# Oppgave 1A
+  - ## Leveranser
+    HTTP endepunkt for lambdafuksjonen: https://lhvipd4ai2.execute-api.eu-west-1.amazonaws.com/Prod/image_generator <br/>
+    body: {"prompt": "< Egen tekst >"}
+
+  - ## Trinn 1
+    SAM-applikasjonen ligger i mappen sam_lambda. <br/>
+    Jeg har ikke brukt sam init, men lagt til filene manuelt.
+
+  - ## Trinn 2
+    uri til lambdafunksjonen: lambda/ <br/>
+    path til å trigge lambdafunksjonen: /image_generator
+
+  - ## Trinn 3
+     Slik jeg forstår oppgaven skal jeg endre hardkodingen av bucket-navnet i lambdakoden i SAM-applikasjonen, ikke fjerne hardkodingen fra filen generate_image.py
+
+  - ## Trinn 4
+    Koden ble bygget og testet lokalt med kommandoene <br/> 
+    "sam build --use-container" for å bygge applikasjonen i docker containeren
+    "sam local start-api" for å starte en lokal Gateway <br/> 
+    "curl -X POST http://127.0.0.1:3000/image_generator -d '{"prompt": "nerd in sunset"}' -H "Content-Type: application/json""
+
+  - ## Annet
+    Koden i template.yaml fila som gir tillatelser er skrevet ved hjelp av Copilot. Tillatelsene er delt inn i rettningslinjer for logging, S3 og AWS Bedrock, som gjør det enklere å administrere. <br/>
+    Jeg endret timeout til 60 sekunder.
+
+
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
 
 <img width="1181" alt="image" src="img/header.png">
