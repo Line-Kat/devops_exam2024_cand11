@@ -1,7 +1,6 @@
 version = 0.1
 [default.deploy.parameters]
 stack_name = "cand11-image-generator"
-resolve_s3 = true
 s3_prefix = "cand11-image-generator"
 region = "eu-west-1"
 confirm_changeset = true
