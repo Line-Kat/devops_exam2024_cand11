@@ -24,6 +24,10 @@
     Koden i template.yaml fila som gir tillatelser er skrevet ved hjelp av Copilot. Tillatelsene er delt inn i rettningslinjer for logging, S3 og AWS Bedrock, som gjør det enklere å administrere. <br/>
     Jeg endret timeout til 60 sekunder.
 
+# Oppgave 1B
+  - ## Leveranser
+    Lenke til kjørt GitHub Actions workflow: 
+
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
 
