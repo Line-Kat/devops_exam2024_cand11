@@ -39,6 +39,13 @@
     SQS-kø URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
 
 # Oppgave 3
+  - ## Leveranser
+    Beskrivelse av taggestrategi: Hver gang det pushes til main-branchen, bygges et Docker-bilde som tagges med en forkortet versjon av 
+    gjeldende Git commit-hash. Dette gjør det enkelt å identifisere den eksakte koden som bildet ble bygget fra. Bildet tagges også med 
+    'latest' for å indikere den nyeste versjonen, fordi bildet med 'latest'-taggen oppdateres. <br/> <br/>
+
+    Container image: lika027/image-generator <br/> <br/>
+    SQS URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
