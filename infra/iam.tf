@@ -17,7 +17,7 @@ resource "aws_iam_role" "lambda_role" {
 
 # IAM-policy for Lambda
 resource "aws_iam_policy" "lambda_policy" {
-  name = "lambda-sqs-policy"
+  name = "cand11-lambda-sqs-policy"
   policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [
