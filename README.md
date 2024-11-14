@@ -16,7 +16,7 @@
 
   - ## Trinn 4
     Koden ble bygget og testet lokalt med kommandoene <br/> 
-    "sam build --use-container" for å bygge applikasjonen i docker containeren
+    "sam build --use-container" for å bygge applikasjonen i docker containeren <br/>
     "sam local start-api" for å starte en lokal Gateway <br/> 
     "curl -X POST http://127.0.0.1:3000/image_generator -d '{"prompt": "nerd in sunset"}' -H "Content-Type: application/json""
 
