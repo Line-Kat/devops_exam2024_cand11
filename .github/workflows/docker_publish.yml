@@ -7,7 +7,7 @@ on:
       
 defaults:
   run:
-    working-directory: .java_sqs_client
+    working-directory: ./java_sqs_client
       
 jobs:
   push_to_registry:
