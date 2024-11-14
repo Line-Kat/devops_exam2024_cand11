@@ -29,7 +29,7 @@ jobs:
           docker build . -t image-generator
           docker tag image-generator lika027/image-generator:$rev
           docker tag image-generator lika027/image-generator:latest
-          docker push cand11/image-generator:$rev
-          docker push cand11/image-generator:latest
+          docker push lika027/image-generator:$rev
+          docker push lika027/image-generator:latest
         
     
