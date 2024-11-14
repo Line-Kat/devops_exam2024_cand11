@@ -27,8 +27,8 @@ jobs:
         run: |
           rev=$(git rev-parse --short HEAD)
           docker build . -t image-generator
-          docker tag image-generator cand11/image-generator:$rev
-          docker tag image-generator cand11/image-generator:latest
+          docker tag image-generator lika027/image-generator:$rev
+          docker tag image-generator lika027/image-generator:latest
           docker push cand11/image-generator:$rev
           docker push cand11/image-generator:latest
         
