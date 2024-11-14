@@ -7,7 +7,7 @@ on:
       
 defaults:
   run:
-    working-directory: .github/workflows
+    working-directory: .infra/
       
 jobs:
   terraform:
