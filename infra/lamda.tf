@@ -2,7 +2,7 @@
 resource "aws_lambda_function" "lambda_sqs" {
   function_name    = "lambda_sqs_function"
   role             = aws_iam_role.lambda_role.arn
-  handler          = "lambda_sqs.lambda_handler" # Forutsatt at hovedfunksjonen i python-filen heter lambda_handler
+  handler          = "lambda_sqs.lambda_handler"
   runtime          = "python3.9"
   timeout          = 15
 

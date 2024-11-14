@@ -46,6 +46,13 @@ resource "aws_iam_policy" "lambda_policy" {
           "bedrock:InvokeModel"
         ],
         Resource = "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-image-generator-v1"
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:PutObject"
+        ],
+        Resource = "arn:aws:s3:::pgr301-couch-explorers/*"
       }
     ]
   })
