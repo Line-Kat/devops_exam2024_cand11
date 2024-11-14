@@ -1,7 +1,6 @@
 # Opprett IAM-rolle for Lambda-funksjonen
 resource "aws_iam_role" "lambda_role" {
-  name = "lambda-sqs-role"
-  
+  name = "cand11-lambda-sqs-role"
   assume_role_policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [
@@ -19,7 +18,6 @@ resource "aws_iam_role" "lambda_role" {
 # IAM-policy for Lambda
 resource "aws_iam_policy" "lambda_policy" {
   name = "lambda-sqs-policy"
-  
   policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [
