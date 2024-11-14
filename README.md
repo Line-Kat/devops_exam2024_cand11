@@ -32,11 +32,13 @@
   - ## Annet
     Jeg lastet ned terraform versjon 1.9.0 ved hjelp av tfenv
 
-# Oppgave 3B
+# Oppgave 2B
   - ## Leveranser
     Lenke til kjørt GitHub Actions worklow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836644089/job/32981962269 <br/> <br/>
     Lenke til en fungerende GitHub Actions workflow (ikke main): https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836334115/job/32981001606 <br/> <br/>
     SQS-kø URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
+
+# Oppgave 3
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
