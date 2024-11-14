@@ -28,6 +28,10 @@
   - ## Leveranser
     Lenke til kjørt GitHub Actions workflow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11820057239
 
+# Oppgave 2A
+  - ## Annet
+    Jeg lastet ned terraform versjon 1.9.0 ved hjelp av tfenv
+
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
 
