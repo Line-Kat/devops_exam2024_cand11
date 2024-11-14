@@ -39,6 +39,13 @@ resource "aws_iam_policy" "lambda_policy" {
           "logs:PutLogEvents"
         ],
         Resource = "arn:aws:logs:*:*:*"
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "bedrock:InvokeModel"
+        ],
+        Resource = "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-image-generator-v1"
       }
     ]
   })
