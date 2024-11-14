@@ -48,6 +48,7 @@ resource "aws_iam_policy" "lambda_policy" {
 
 # Koble policy til IAM-rollen
 resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
+  name       = "lambda-policy-attachment"
   policy_arn = aws_iam_policy.lambda_policy.arn
   roles      = [aws_iam_role.lambda_role.name]
 }
