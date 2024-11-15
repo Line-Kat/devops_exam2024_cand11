@@ -12,7 +12,7 @@ variable "prefix" {
 variable "threshold" {
     type    = string
     #default = "180"
-    default = "10"
+    default = "1"
 }
 
 resource "aws_sns_topic" "alert_topic" {
