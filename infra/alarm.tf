@@ -11,7 +11,8 @@ variable "prefix" {
 
 variable "threshold" {
     type    = string
-    default = "180"
+    #default = "180"
+    default = "1"
 }
 
 resource "aws_sns_topic" "alert_topic" {
@@ -27,10 +28,12 @@ resource "aws_sns_topic_subscription" "email_subscription" {
 resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" { 
     alarm_name          = "${var.prefix}-SQS-OldestMessageAge-High" 
     comparison_operator = "GreaterThanThreshold" 
-    evaluation_periods  = 2 
+    evaluation_periods  = 1
+    #evaluation_periods  = 2 
     metric_name         = "ApproximateAgeOfOldestMessage" 
     namespace           = "AWS/SQS" 
-    period              = 300
+    period = 60
+    #period              = 300
     statistic           = "Maximum" 
     threshold           = var.threshold
     dimensions          = { 
