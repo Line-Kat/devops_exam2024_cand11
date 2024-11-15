@@ -5,8 +5,8 @@ variable "alarm_email" {
 }
 
 variable "prefix" {
-    type = string
-    default     = "cand11"
+    type    = string
+    default = "cand11"
 }
 
 variable "threshold" {
