@@ -46,6 +46,14 @@
 
     Container image: lika027/image-generator <br/> <br/>
     SQS URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
+    
+# Oppgave 4
+  - ## Leveranser
+
+  - ## Annet
+    Siden brukerne har klaget over at at det tar lang tid før bildene vises, ofte flere minutter, har jeg valgt å sette terskelen til tre minutter. <>br/
+    Metrikken evalueres hvert femte minutt (300 sek).
+    For at alarmen skal utløses må metrikken overstige terskelen to påfølgende evalueringsperioder. <br/>
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
