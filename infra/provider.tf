@@ -13,7 +13,7 @@ terraform {
   
   backend "s3" {
     bucket         = "pgr301-2024-terraform-state"
-    key            = "${var.prefix}-state.tfstate"
+    key            = "cand11-state.tfstate"
     region         = "eu-west-1"
   }
 }
