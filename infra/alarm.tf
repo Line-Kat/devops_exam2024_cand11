@@ -28,7 +28,8 @@ resource "aws_sns_topic_subscription" "email_subscription" {
 resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" { 
     alarm_name          = "${var.prefix}-SQS-OldestMessageAge-High" 
     comparison_operator = "GreaterThanThreshold" 
-    evaluation_periods  = 2 
+    evaluation_periods  = 1
+    #evaluation_periods  = 2 
     metric_name         = "ApproximateAgeOfOldestMessage" 
     namespace           = "AWS/SQS" 
     period = 60
