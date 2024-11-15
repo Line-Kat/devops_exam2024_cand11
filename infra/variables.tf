@@ -11,5 +11,5 @@ variable "prefix" {
 
 variable "threshold" {
     type    = string
-    default = "180"
+    default = "120"
 }

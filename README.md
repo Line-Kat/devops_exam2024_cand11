@@ -1,59 +1,49 @@
-# Oppgave 1A
-  - ## Leveranser
+# Oppgave 1
+- ## Leveranser
+  - 1A <br/>
     HTTP endepunkt for lambdafuksjonen: https://lhvipd4ai2.execute-api.eu-west-1.amazonaws.com/Prod/image_generator <br/>
-    body: {"prompt": "< Egen tekst >"}
-
-  - ## Trinn 1
-    SAM-applikasjonen ligger i mappen sam_lambda. <br/>
-    Jeg har ikke brukt sam init, men lagt til filene manuelt.
-
-  - ## Trinn 2
-    uri til lambdafunksjonen: lambda/ <br/>
-    path til å trigge lambdafunksjonen: /image_generator
-
-  - ## Trinn 3
-     Slik jeg forstår oppgaven skal jeg endre hardkodingen av bucket-navnet i lambdakoden i SAM-applikasjonen, ikke fjerne hardkodingen fra filen generate_image.py
-
-  - ## Trinn 4
-    Koden ble bygget og testet lokalt med kommandoene <br/> 
-    "sam build --use-container" for å bygge applikasjonen i docker containeren <br/>
-    "sam local start-api" for å starte en lokal Gateway <br/> 
-    "curl -X POST http://127.0.0.1:3000/image_generator -d '{"prompt": "nerd in sunset"}' -H "Content-Type: application/json""
-
-  - ## Annet
-    Koden i template.yaml fila som gir tillatelser er skrevet ved hjelp av Copilot. Tillatelsene er delt inn i rettningslinjer for logging, S3 og AWS Bedrock, som gjør det enklere å administrere. <br/>
-    Jeg endret timeout til 60 sekunder.
-
-# Oppgave 1B
-  - ## Leveranser
+    body: {"prompt": "< Egen tekst >"} <br/> <br/>
+  - 1B <br/>
     Lenke til kjørt GitHub Actions workflow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11820057239
+    
 
-# Oppgave 2A
-  - ## Annet
-    Jeg lastet ned terraform versjon 1.9.0 ved hjelp av tfenv
+- ## Annet
+  - SAM-applikasjonen ligger i mappen sam_lambda. <br/>
+  - Jeg har ikke brukt sam init, men lagt til filene manuelt. <br/>
+  - Slik jeg forstår oppgaven i trinn 3 skal jeg endre hardkodingen av bucket-navnet i lambdakoden i SAM-applikasjonen, ikke fjerne hardkodingen fra filen generate_image.py <br/>
+  - I trinn 4 ble koden ble bygget og testet lokalt med kommandoene <br/>
+      - "sam build --use-container" for å bygge applikasjonen i docker containeren <br/>
+      - "sam local start-api" for å starte en lokal Gateway <br/>
+      - "curl -X POST http://127.0.0.1:3000/image_generator -d '{"prompt": "nerd in sunset"}' -H "Content-Type: application/json""
 
-# Oppgave 2B
-  - ## Leveranser
-    Lenke til kjørt GitHub Actions worklow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836644089/job/32981962269 <br/> <br/>
-    Lenke til en fungerende GitHub Actions workflow (ikke main): https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836334115/job/32981001606 <br/> <br/>
-    SQS-kø URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
+# Oppgave 2
+- ## Leveranser
+  - 2B <br/>
+  Lenke til kjørt GitHub Actions worklow: https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836644089/job/32981962269 <br/> <br/>
+  Lenke til en fungerende GitHub Actions workflow (ikke main): https://github.com/Line-Kat/devops_exam2024_cand11/actions/runs/11836334115/job/32981001606 <br/> <br/>
+  SQS-kø URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
+
+- ## Annet
+  Jeg lastet ned terraform versjon 1.9.0 ved hjelp av tfenv
 
 # Oppgave 3
-  - ## Leveranser
-    Beskrivelse av taggestrategi: Hver gang det pushes til main-branchen, bygges et Docker-bilde som tagges med en forkortet versjon av 
-    gjeldende Git commit-hash. Dette gjør det enkelt å identifisere den eksakte koden som bildet ble bygget fra. Bildet tagges også med 
-    'latest' for å indikere den nyeste versjonen, fordi bildet med 'latest'-taggen oppdateres. <br/> <br/>
+- ## Leveranser
+  Beskrivelse av taggestrategi: Hver gang det pushes til main-branchen, bygges et Docker-bilde som tagges med en forkortet versjon av
+  gjeldende Git commit-hash. Dette gjør det enkelt å identifisere den eksakte koden som bildet ble bygget fra. Bildet tagges også med
+  'latest' for å indikere den nyeste versjonen, fordi bildet med 'latest'-taggen oppdateres. <br/> <br/>
 
-    Container image: lika027/image-generator <br/> <br/>
-    SQS URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue
-    
+  Container image: lika027/image-generator <br/> <br/>
+  SQS URL: https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue <br/> <br/>
+  Kommando: docker run -e AWS_ACCESS_KEY_ID=< your_access_key_id > -e AWS_SECRET_ACCESS_KEY=< your_secret_access_key > -e SQS_QUEUE_URL=https://sqs.eu-west-1.amazonaws.com/244530008913/my_sqs-queue lika027/image-generator "me on top of a pyramid"
+
 # Oppgave 4
-  - ## Leveranser
 
-  - ## Annet
-    Siden brukerne har klaget over at at det tar lang tid før bildene vises, ofte flere minutter, har jeg valgt å sette terskelen til tre minutter. <>br/
-    Metrikken evalueres hvert femte minutt (300 sek).
-    For at alarmen skal utløses må metrikken overstige terskelen to påfølgende evalueringsperioder. <br/>
+- ## Annet
+  Siden brukerne har klaget over at at det tar lang tid før bildene vises, ofte flere minutter, har jeg valgt å sette terskelen til to minutter. <br/>
+  Metrikken evalueres hvert femte minutt (300 sek). <br/>
+  For at alarmen skal utløses må metrikken overstige terskelen to påfølgende evalueringsperioder. <br/>
+
+# Oppgave 5
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
