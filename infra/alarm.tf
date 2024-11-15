@@ -21,7 +21,7 @@ resource "aws_sns_topic" "alert_topic" {
 resource "aws_sns_topic_subscription" "email_subscription" { 
     topic_arn = aws_sns_topic.alert_topic.arn 
     protocol  = "email" 
-    endpoint  = var.alert_email
+    endpoint  = var.alarm_email
 }
 
 resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" { 
@@ -33,7 +33,6 @@ resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" {
     period              = 300
     statistic           = "Maximum" 
     threshold           = var.threshold
-    description         =  "This alarm goes off when the oldest message age in the SQS queue exceeds threshold"
     dimensions          = { 
       QueueName = aws_sqs_queue.my_queue.name
     } 
