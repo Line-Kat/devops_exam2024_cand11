@@ -43,7 +43,62 @@
   Metrikken evalueres hvert femte minutt (300 sek). <br/>
   For at alarmen skal utløses må metrikken overstige terskelen to påfølgende evalueringsperioder. <br/>
 
-# Oppgave 5
+# Oppgave 5 
+## Automatisering og kontinuerlig levering (CI/CD)
+Kort beskrevet innebærer mikrotjenestearkitektur at applikasjonen er delt opp i mikrotjenester som har hvert sitt ansvarsområde, mens i 
+serverless-arkitektur er applikasjonen delt opp i små, uavhengige funksjoner (Function as a Service). <br/>
+
+I en serverless-arkitektur kan hver funksjon ha sin egen pipeline for bygging, testing og distribusjon, noe som gjør det mulig å implementere 
+endringer i én funksjon uten å påvirke hele applikasjonen. En utfordring med dette er at det kan bli mange pipelines å administrere. Automatiseringen 
+er bygget rundt hendelsesutløsere, som for eksempel Lambda-funksjoner som trigges av meldinger i SQS. For å automatisere infrastrukturen kan man bruke verktøy 
+som AWS SAM eller Terraform. Dette gjør det enklere å distribuere og administrere funksjonene. Siden det kun er de nødvendige funksjonene som distribueres, 
+kan distribusjonsprosessen foregå raskere.<br/>
+
+I en mikrotjenestearkitektur kan hver mikrotjeneste ha sin egen pipeline for bygging, testing og distribusjon. Dette gjør at team kan jobbe parallelt 
+på ulike deler av applikasjonen, og endringer i én mikrotjeneste kan distribueres uavhengig av de andre. Dette bidrar til fleksibilitet og reduserer risikoen 
+for at én feil skal spre seg til andre deler av systemet. Ulempen er at administrasjon av mange mikrotjenester og deres avhengigheter kan være utfordrende.
+
+
+## Observability (overvåkning)
+I en mikrotjenestearkitektur finnes det ulike verktøy for overvåkning og feilsøking som gjør det enkelt å feilsøke og få god oversikt. Hver 
+mikrotjeneste genererer sine egne logger som kan sendes til loggtjenester. Mikrotjenester er lette å feilsøke fordi de er isolerte enheter, og 
+problemer kan vanligvis spores tilbake til en spesifikk tjeneste, noe som forenkler feilsøking og feilhåndtering.<br/>
+
+Når man går over til en serverless-arkitektur (FaaS) er det mange funksjoner med spredte plasseringer som kan gjøre det mer utfordrende med overvåkning. 
+Feilsøking blir mer utfordrende siden problemet må spores gjennom flere hendelser og funksjoner. AWS tilbyr ulike verktøy for overvåking og logging, for 
+eksempel CloudWatch Logs og CloudWatch. Lambda-funksjoner genererer logger som sendes til CloudWatch Logs, men en utfordring er at mengden loggdata kan bli 
+stor. Dette kan gjøre det utfordrende å finne og analysere relevante logger raskt. CloudWatch brukes til å overvåke Lambda-funksjoner, inkludert metrikker 
+som antall invokasjoner, varighet, feilmeldinger og påloggingsforsøk. En annen utfordring er at overvåkning og logging i en serverless-arkitektur kan bli kostbart, 
+spesielt når store mengder data genereres fra mange funksjoner som kjøres ofte.
+
+
+## Skalerbarhet og kostnadskontroll
+Funksjoner i en serverless-arkitektur trigges ofte av bestemte hendelsesutløsere. Dette gjør at systemet automatisk kan skalere basert på antallet 
+utløste hendelser. En utfordring er kaldstart, som refererer til tiden det tar å starte en ny instans av en funksjon. Dette kan føre til forsinkelser 
+ved høy trafikk. Ressursutnyttelsen i serverless-arkitektur er effektiv, ettersom ressurser tildeles dynamisk og kun når funksjonene faktisk kjører. 
+For applikasjoner med ujevne bruksmønstre bidrar dette også til lavere kostnader, ettersom det kun betales for faktisk brukstid. For applikasjoner med 
+kontinuerlig høy trafikk kan imidlertid kostnadene raskt bli høye.<br/>
+
+I en mikrotjenestearkitektur kan tjenestene skaleres ved å distribuere dem over flere noder eller containere. I motsetning til serverless-arkitektur krever 
+skalerbarheten mer administrasjon og manuell konfigurasjon for å sikre at alle tjenester skaleres riktig. Fordelen er at ressurser kan tildeles spesifikt til 
+hver mikrotjeneste, noe som gir mer presis kontroll og målrettet ressursutnyttelse basert på spesifikke behov. Hvis tjenestene derimot ikke er optimalt justert 
+i forhold til faktisk bruk, kan ressursutnyttelsen bli ineffektiv fordi ekstra ressurser må tildeles for å håndtere perioder med høy trafikk. Kostnaden knyttet 
+til servere vil være den samme uavhengig av trafikk, så for applikasjoner med jevn trafikk kan mikrotjenestearkitektur være kostnadseffektivt. 
+
+## Eierskap og ansvar
+I mikrotjenestearkitektur har DevOps-teamet fullt ansvar for å overvåke og finjustere ytelsen til hver enkelt tjeneste, og de må selv administrere skalering. 
+Teamet har full kontroll over påliteligheten til hver tjeneste, det vil si at de må sørge for at tjenesten er robust. Teamet har også kontroll over driftskostnader, som 
+innebærer hvor mye ressurser som skal tildeles hver mikrotjeneste og administrerer kostnadene knyttet til servere, nettverk og lagring. Den økte kompleksiteten 
+ved administrasjon av flere tjenester kan øke arbeidsbelastningen, noe som kan føre til økte driftskostnader.<br/>
+
+I en overgang til en serverless-arkitektur vil DevOps-teamet ha mindre direkte kontroll over ytelsen, da infrastrukturen hovedsakelig håndteres av 
+skyleverandøren. Dette frigjør tid fra serveroptimalisering, slik at teamet kan fokusere mer på å forbedre applikasjonskoden. Skaleringen og 
+ressursstyringen vil bli automatisert, som gir muligheter for å optimalisere ytelsen uten manuelle inngrep, men det er teamets ansvar å sikre at applikasjonen 
+oppfyller funksjonskravene. Med tanke på kostnader, kan betaling basert på faktisk bruk være kostnadseffektivt, spesielt for applikasjoner med 
+varierende trafikk.
+
+
+
 
 
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
