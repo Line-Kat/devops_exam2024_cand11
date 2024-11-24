@@ -97,7 +97,8 @@ ressursstyringen vil bli automatisert, som gir muligheter for å optimalisere yt
 oppfyller funksjonskravene. Med tanke på kostnader, kan betaling basert på faktisk bruk være kostnadseffektivt, spesielt for applikasjoner med 
 varierende trafikk.
 
-
+# Kilder
+Forelesningsnotater, power points, ChatGPT og Copilot.
 
 
 
